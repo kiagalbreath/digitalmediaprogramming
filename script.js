@@ -6,16 +6,17 @@ console.log("Number of child nodes: " + fetchId.childNodes.length);
 var fetchTags= document.getElementsByTagName("li");
 console.log("Number of li links: "+ fetchTags.length);
 
-var newItem= document.createElement("li");
+const CTA = document.querySelector(".cta a");
+const ALERT = document.querySelector("#read-alert");
 
-var newText= document.createTextNode("New List Item");
+CTA.classList.remove("hide");
+ALERT.classList.add("hide");
 
-fetchId.appendChild(newItem);
-fetchId.appendChild(newText);
+function reveal(e) {
+    e.preventDefault();
+    CTA.classList.toggle("hide");
+    ALERT.classList.toggle("hide");
+}
 
-var questionOne = prompt ("What are you currently doing?");
-		if (questionOne== "nothing"){
-			alert("You are a wise person.");
-		}else ("You should be doing a whole bunch of nothingness, my friend.");
-
-alert ("We can know only that we know nothing.");
+CTA.addEventListener('click', reveal, false);
+ALERT.addEventListener('click', function(){console.log("The button was clicked!")}, false);
